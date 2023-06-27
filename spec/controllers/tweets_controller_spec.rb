@@ -11,14 +11,14 @@ RSpec.describe TweetsController, type: :controller do
 
       post :create, params: {
         tweet: {
-          message: 'Test Message'
+          content: 'Test Message'
         }
       }
 
       expect(response.body).to eq({
         tweet: {
           username: user.username,
-          message: 'Test Message'
+          content: 'Test Message'
         }
       }.to_json)
     end
@@ -37,11 +37,11 @@ RSpec.describe TweetsController, type: :controller do
           {
             id: Tweet.order(created_at: :desc)[0].id,
             username: user.username,
-            message: 'Test Message'
+            content: 'Test Message'
           }, {
             id: Tweet.order(created_at: :desc)[1].id,
             username: user.username,
-            message: 'Test Message'
+            content: 'Test Message'
           }
         ]
       }.to_json)
@@ -88,7 +88,7 @@ RSpec.describe TweetsController, type: :controller do
           {
             id: tweet1.id,
             username: user1.username,
-            message: 'Test Message'
+            content: 'Test Message'
           }
         ]
       }.to_json)

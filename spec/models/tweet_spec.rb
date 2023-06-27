@@ -4,19 +4,19 @@ RSpec.describe Tweet, type: :model do
   describe '.create' do
     it 'must belong to a user' do
       expect {
-        Tweet.create!(message: 'test')
+        Tweet.create!(content: 'test')
       }.to raise_error(ActiveRecord::RecordInvalid)
     end
 
-    it 'must have the presence of message' do
+    it 'must have the presence of content' do
       expect {
-        FactoryBot.create(:tweet, message: nil)
+        FactoryBot.create(:tweet, content: nil)
       }.to raise_error(ActiveRecord::RecordInvalid)
     end
 
-    it 'must have a message with max. 140 characters' do
+    it 'must have a content with max. 140 characters' do
       expect {
-        FactoryBot.create(:tweet, message: 'c' * 141)
+        FactoryBot.create(:tweet, content: 'c' * 141)
       }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
